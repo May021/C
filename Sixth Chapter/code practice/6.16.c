@@ -1,21 +1,20 @@
+//Daphne以10%的单利息投资了100美元（也就是说，每年投资获利相当于原始投资的10%）。
+//Deirdre以 5%的复合利息投资了 100 美元（也就是说，利息是当前余额的 5%，包含之前的利息）。
+//编写一个程序，计算需要多少年Deirdre的投资额才会超过Daphne，并显示那时两人的投资额。
 #include <stdio.h>
-#define RATE_SIMP 0.10
-#define RATE_COMP 0.05
-#define INIT_AMT 100.0
+#define RATE1 10
+#define RATE2 0.05
 int main(void)
 {
-	double daphne = INIT_AMT;
-	double deidre = INIT_AMT;
-	int years = 0;
-	while(deidre <= daphne)
-	{
-		daphne += RATE_SIMP * INIT_AMT;
-		deidre += RATE_COMP * deidre;
-		++years;
-	}
-	printf("Investment values after %d years:\n", years);
-	printf("Daphne: $%.2f\n", daphne);
-	printf("Deidre: $%.2f\n", deidre);
+	float Daphne_money = 100, Deirdre_money = 100;
+	int year;
 	
+	for(year = 0; Deirdre_money<=Daphne_money; year++)
+	{
+		Daphne_money += RATE1;
+		Deirdre_money *= (1+RATE2);
+	}
+	printf("%d年后，Deirdre的投资额超过Daphne\nDaphne的投资额：%f  Deirdre的投资额: %f",year,Daphne_money,Deirdre_money);
+
 	return 0;
 } 
